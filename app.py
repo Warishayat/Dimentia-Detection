@@ -31,5 +31,3 @@ async def analyze_route(payload: PatientInput):
     return {"dementia_result": result.dict()}
 
 
-from mangum import Mangum
-handler = Mangum(app)
