@@ -29,3 +29,7 @@ async def analyze_route(payload: PatientInput):
         raise HTTPException(status_code=500, detail=str(e))
 
     return {"dementia_result": result.dict()}
+
+
+from mangum import Mangum
+handler = Mangum(app)
