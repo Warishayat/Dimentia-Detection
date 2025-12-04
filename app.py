@@ -1,9 +1,10 @@
 from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from agent import analyze_dementia
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,9 +24,11 @@ class PatientInput(BaseModel):
     nWBV: float
     ASF: float
 
+
 @app.get("/")
 async def test_route():
     return {"status": "running"}
+
 
 @app.post("/analyze")
 async def analyze_route(payload: PatientInput):
