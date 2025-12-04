@@ -158,3 +158,18 @@ Simple health check.
 
 MIT License — Free to use and modify.
 
+Response in the from of json:
+```
+{
+  "dementia_result": {
+    "has_dementia": true,
+    "diagnosis_reason": "The patient presents with a MMSE score of 17 and a CDR of 1.0, both indicative of mild cognitive impairment progressing to mild dementia. MRI volumetric data show a reduced normalized whole brain volume (nWBV = 0.66) and an elevated atrophy score factor (ASF = 1.1), suggesting significant brain atrophy consistent with neurodegenerative disease. The eTIV of 1370.0 is within normal range, confirming that the reduced nWBV is due to atrophy rather than overall brain size. Combined, these findings strongly support a diagnosis of mild dementia.",
+    "dementia_severity": "Mild Dementia",
+    "prevention_or_treatment": "1. **Pharmacologic**: Initiate cholinesterase inhibitor (e.g., donepezil 5 mg daily, titrate to 10 mg). 2. **Cognitive Stimulation**: Enroll in structured memory training or occupational therapy. 3. **Physical Activity**: Encourage moderate aerobic exercise (e.g., walking 30 min/day). 4. **Diet**: Adopt Mediterranean diet rich in fruits, vegetables, whole grains, and omega‑3 fatty acids. 5. **Sleep Hygiene**: Maintain regular sleep schedule, limit caffeine. 6. **Social Engagement**: Join community groups or volunteer activities. 7. **Regular Monitoring**: Repeat MMSE and MRI annually to assess progression.",
+    "markdown_input_table": "| Parameter | Value |\n|-----------|-------|\n| Gender | F |\n| Age | 82 |\n| Education | 12 |\n| MMSE | 17 |\n| CDR | 1.0 |\n| eTIV | 1370.0 |\n| nWBV | 0.66 |\n| ASF | 1.1 |",
+    "markdown_score_table": "| Metric | Value |\n|--------|-------|\n| MMSE | 17 |\n| CDR | 1.0 |\n| nWBV | 0.66 |\n| ASF | 1.1 |\n| eTIV | 1370.0 |",
+    "short_summary": "The patient shows mild dementia based on MMSE 17, CDR 1.0, and MRI evidence of brain atrophy (nWBV 0.66, ASF 1.1). Early pharmacologic and non‑pharmacologic interventions are recommended to slow decline.",
+    "full_markdown_report": "# Dementia Diagnostic Analysis\n\n## Patient Overview\n| Parameter | Value |\n|-----------|-------|\n| Gender | Female |\n| Age | 82 |\n| Education | 12 years |\n\n## Cognitive Assessment\n| Test | Score |\n|------|-------|\n| MMSE | 17 |\n| CDR | 1.0 |\n\n## MRI Volumetric Metrics\n| Metric | Value |\n|--------|-------|\n| eTIV | 1370.0 mm³ |\n| nWBV | 0.66 |\n| ASF | 1.1 |\n\n## Interpretation\n- **MMSE 17**: Indicates moderate cognitive impairment.\n- **CDR 1.0**: Consistent with mild dementia.\n- **nWBV 0.66**: Significantly below the normal range (~0.80), reflecting brain atrophy.\n- **ASF 1.1**: Elevated, supporting the presence of atrophy.\n- **eTIV 1370.0**: Within normal limits, confirming that reduced nWBV is due to atrophy.\n\n## Diagnosis\n**Mild Dementia** – The combination of cognitive deficits and MRI evidence of atrophy strongly supports this diagnosis.\n\n## Recommendations\n1. **Pharmacologic**: Consider cholinesterase inhibitors (e.g., donepezil) to slow cognitive decline.\n2. **Non‑pharmacologic**: Cognitive stimulation therapy, structured memory exercises, and social engagement.\n3. **Lifestyle**: Mediterranean diet, regular aerobic exercise, and sleep hygiene.\n4. **Monitoring**: Repeat MMSE and MRI in 12 months to track progression.\n5. **Support**: Referral to a geriatric psychiatrist or neurologist for comprehensive care.\n\n## Prognosis\nWith early intervention and a multidisciplinary approach, progression can be slowed, and quality of life maintained for several years."
+  }
+}
+```
