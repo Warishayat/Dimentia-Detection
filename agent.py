@@ -4,7 +4,6 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 import os
 import warnings
-import json
 
 warnings.filterwarnings('ignore')
 load_dotenv()
@@ -20,6 +19,7 @@ class StructuredResponse(BaseModel):
     short_summary: str
     full_markdown_report: str
 
+
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 Model = ChatGroq(
@@ -28,7 +28,7 @@ Model = ChatGroq(
     model="openai/gpt-oss-20b"
 )
 
-Dimentia_Model = Model.with_structured_output(schema=StructuredResponse)
+Dementia_Model = Model.with_structured_output(schema=StructuredResponse)
 
 
 prompt_for_llm = PromptTemplate(
@@ -36,11 +36,13 @@ prompt_for_llm = PromptTemplate(
         "Gender", "Age", "EDUC", "MMSE", "CDR", "eTIV", "nWBV", "ASF"
     ],
     template="""
-You are an expert clinical LLM specializing in early dementia detection using MRI metadata and cognitive scores.
+You are an expert clinical AI model that evaluates dementia likelihood using MRI volumetric data and cognitive scores.
 
-Analyze the patient information and produce a structured response following the JSON schema.
+Generate a structured dementia diagnostic analysis based strictly on the patient data.
 
-# Patient Data
+Return ONLY the structure required by the Pydantic model (no JSON, no extra text — the LLM will output the tool call automatically).
+
+Patient Data:
 - Gender: {Gender}
 - Age: {Age}
 - Education: {EDUC}
@@ -49,26 +51,24 @@ Analyze the patient information and produce a structured response following the 
 - eTIV: {eTIV}
 - nWBV: {nWBV}
 - ASF: {ASF}
-
-Generate only the structured fields. No additional explanations.
 """
 )
 
+
 def analyze_dementia(patient_data: dict) -> StructuredResponse:
-    chain = prompt_for_llm | Dimentia_Model
-    result = chain.invoke(patient_data)
-    return result
+    chain = prompt_for_llm | Dementia_Model
+    return chain.invoke(patient_data)
 
 
 if __name__ == "__main__":
     result = analyze_dementia({
-        "Gender": "M",
-        "Age": "72",
-        "EDUC": "16",
-        "MMSE": "28",
-        "CDR": "0",
-        "eTIV": "1500",
-        "nWBV": "0.72",
-        "ASF": "1.12"
-    })
+    "Gender": "F",
+    "Age": "82",
+    "EDUC": "12",
+    "MMSE": "17",
+    "CDR": "1",
+    "eTIV": "1370",
+    "nWBV": "0.66",
+    "ASF": "1.10"
+})
     print(result)
